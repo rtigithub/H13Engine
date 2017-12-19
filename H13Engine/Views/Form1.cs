@@ -1,4 +1,15 @@
-﻿using System;
+﻿// ***********************************************************************
+// Assembly         : H13Engine
+// Author           :
+// Created          : 12-08-2017
+// Last Modified On : 12-19-2017
+// <copyright file="Form1.cs" company="Resolution Technology, Inc.">
+//     Copyright ©  2017
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+
+using System;
 using System.Drawing;
 using System.Windows.Forms;
 using H13Engine.Models;
@@ -7,18 +18,36 @@ using Rti.Halcon;
 
 namespace H13Engine
 {
+     /// <summary>
+     /// Class Form1.
+     /// </summary>
+     /// <seealso cref="System.Windows.Forms.Form" />
      public partial class Form1 : Form
      {
           #region Private Fields
 
+          /// <summary>
+          /// The halcon engine
+          /// </summary>
           private HalconEngine halconEngine;
+
+          /// <summary>
+          /// The halcon image
+          /// </summary>
           private HalconImage halconImage;
+
+          /// <summary>
+          /// The halcon window
+          /// </summary>
           private HWindow halconWindow;
 
           #endregion Private Fields
 
           #region Public Constructors
 
+          /// <summary>
+          /// Initializes a new instance of the <see cref="Form1"/> class.
+          /// </summary>
           public Form1()
           {
                try
@@ -38,14 +67,22 @@ namespace H13Engine
 
           #region Private Methods
 
+          /// <summary>
+          /// Displays the hdevelop procedures.
+          /// </summary>
           private void DisplayHdevelopProcedures()
           {
-               foreach (var procedureName in halconEngine.HalconProcedures)
+               foreach (var procedureName in halconEngine.HalconProcedureNames)
                {
                     listView1.Items.Add(procedureName);
                }
           }
 
+          /// <summary>
+          /// Halcons the mouse wheel.
+          /// </summary>
+          /// <param name="sender">The sender.</param>
+          /// <param name="e">The <see cref="MouseEventArgs"/> instance containing the event data.</param>
           private void HalconMouseWheel(object sender, MouseEventArgs e)
           {
                Point pt = (sender as HSmartWindowControl).Location;
@@ -54,10 +91,20 @@ namespace H13Engine
                (sender as HSmartWindowControl).HSmartWindowControl_MouseWheel(sender, newe);
           }
 
+          /// <summary>
+          /// Handles the Click event of the HalconProcedureRun control.
+          /// </summary>
+          /// <param name="sender">The source of the event.</param>
+          /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
           private void HalconProcedureRun_Click(object sender, EventArgs e)
           {
           }
 
+          /// <summary>
+          /// Handles the Load event of the HalconWindowControl control.
+          /// </summary>
+          /// <param name="sender">The source of the event.</param>
+          /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
           private void HalconWindowControl_Load(object sender, EventArgs e)
           {
                if (sender is HSmartWindowControl)
@@ -70,6 +117,11 @@ namespace H13Engine
                }
           }
 
+          /// <summary>
+          /// Handles the SizeChanged event of the HalconWindowControl control.
+          /// </summary>
+          /// <param name="sender">The source of the event.</param>
+          /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
           private void HalconWindowControl_SizeChanged(object sender, EventArgs e)
           {
                if (sender is HSmartWindowControl)
@@ -84,6 +136,10 @@ namespace H13Engine
                }
           }
 
+          /// <summary>
+          /// Loads the and display halcon image.
+          /// </summary>
+          /// <param name="fileName">Name of the file.</param>
           private void LoadAndDisplayHalconImage(string fileName)
           {
                halconImage.FileName = fileName;
@@ -92,11 +148,20 @@ namespace H13Engine
                textBoxImageName.Text = openImageDialog.FileName;
           }
 
+          /// <summary>
+          /// Loads the hdevelop program.
+          /// </summary>
+          /// <param name="filename">The filename.</param>
           private void LoadHdevelopProgram(string filename)
           {
                halconEngine.FileName = filename;
           }
 
+          /// <summary>
+          /// Handles the Click event of the OpenHdevelopItem control.
+          /// </summary>
+          /// <param name="sender">The source of the event.</param>
+          /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
           private void OpenHdevelopItem_Click(object sender, EventArgs e)
           {
                if (openHdevDialog.ShowDialog() == DialogResult.OK)
@@ -106,6 +171,11 @@ namespace H13Engine
                }
           }
 
+          /// <summary>
+          /// Handles the Click event of the OpenImageItem control.
+          /// </summary>
+          /// <param name="sender">The source of the event.</param>
+          /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
           private void OpenImageItem_Click(object sender, EventArgs e)
           {
                toolStripStatusLabel1.Text = String.Empty;

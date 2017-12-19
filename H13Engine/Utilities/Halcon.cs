@@ -2,8 +2,7 @@
 // Assembly         : Rti.Core.dll
 // Author           : Resolution Technology, Inc.
 // Created          : 03-10-2017
-// Last Modified On : 04-26-2017
-// ***********************************************************************
+// Last Modified On : 12-19-2017
 // <copyright file="Halcon.cs" company="Resolution Technology, Inc.">
 //     Copyright (c) 2016, 2017. All rights reserved.
 // </copyright>
@@ -43,10 +42,9 @@ namespace Rti.Halcon
                          int count = @from.CountObj();
                          if (count > 1)
                          {
+                              HTuple rows, columns;
                               for (int i = 1; i <= count; i++)
                               {
-                                   HTuple rows;
-                                   HTuple columns;
                                    @from[i].GetContourXld(out rows, out columns);
                                    cumulativeRows = cumulativeRows.TupleConcat(rows);
                                    cumulativeColumns = cumulativeColumns.TupleConcat(columns);
@@ -85,7 +83,7 @@ namespace Rti.Halcon
           /// <param name="from">The source HImage.</param>
           /// <param name="to">The destination HImage.</param>
           /// <exception cref="ArgumentNullException">from must not be null.</exception>
-          /// <exception cref="System.ArgumentNullException"></exception>
+          /// <exception cref="System.ArgumentNullException">from must not be null.</exception>
           public static void HCopy(this HImage from, ref HImage to)
           {
                try
@@ -119,7 +117,7 @@ namespace Rti.Halcon
           /// <param name="from">The source HRegion.</param>
           /// <param name="to">The destination HRegion.</param>
           /// <exception cref="ArgumentNullException">from must not be null.</exception>
-          /// <exception cref="System.ArgumentNullException"></exception>
+          /// <exception cref="System.ArgumentNullException">from must not be null.</exception>
           public static void HCopy(this HRegion from, ref HRegion to)
           {
                try
@@ -152,7 +150,7 @@ namespace Rti.Halcon
           /// <param name="from">The source HXLD.</param>
           /// <param name="to">The destination HXLD.</param>
           /// <exception cref="ArgumentNullException">from must not be null.</exception>
-          /// <exception cref="System.ArgumentNullException"></exception>
+          /// <exception cref="System.ArgumentNullException">from must not be null.</exception>
           public static void HCopy(this HXLD from, ref HXLD to)
           {
                try
@@ -186,7 +184,7 @@ namespace Rti.Halcon
           /// <param name="from">The source HXLDCont.</param>
           /// <param name="to">The destination HXLDCont.</param>
           /// <exception cref="ArgumentNullException">from must not be null.</exception>
-          /// <exception cref="System.ArgumentNullException"></exception>
+          /// <exception cref="System.ArgumentNullException">from must not be null.</exception>
           public static void HCopy(this HXLDCont from, ref HXLDCont to)
           {
                try

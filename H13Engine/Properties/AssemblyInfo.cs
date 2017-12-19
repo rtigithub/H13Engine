@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("Galv Coil Eye Label OCR")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Windows Form application demonstrating use of H13DevEngine.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Resolution Technology, Inc.")]
 [assembly: AssemblyProduct("H13Engine")]
